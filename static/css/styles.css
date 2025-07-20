@@ -1,0 +1,586 @@
+            html {
+				font-size: 16px; 
+			}
+
+			body{
+				position: relative;
+				height: 200vh;
+				margin: 0;
+				padding: 0;
+				background: #070085;
+				font-size: 16px;
+				background: linear-gradient(135deg, rgba(7, 0, 133, 1) 0%, rgba(94, 0, 78, 1) 40%, rgba(140, 0, 255, 1) 100%);
+			}
+
+			.header_header {
+				position: fixed;
+				
+				top: 0;
+				left: 0;
+				right: 0;
+				background: #000000;  
+				z-index: 1;
+				display: flex;
+				align-items: center;
+				padding: 0px 40px 0px;
+				
+				height: 10%;
+
+			}
+		
+			.bottomfooter{
+				position: absolute;
+				bottom: -3%;
+				left: 0%;
+				width: 100%;
+				height: 7.5%;
+				background: #000000;
+				color: #ffffff;
+				text-align: center;
+				z-index: 0;
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				border-top: 0.5vw solid  #0084ff;
+			}
+		
+			.menuDiv{
+				position: fixed;
+				width: 20%;  
+				height: 102%;  
+				z-index: 2;
+				top:-2%;	
+				left:-21%;
+				background: black;
+				
+			}
+			
+			.menuBg{
+				position: absolute;
+			    top: 0%;
+				border: 0.5vw solid #000000;
+			    width: 100%;  
+				
+				height: 100%;  
+				background: linear-gradient(225deg,rgba(45, 0, 194, 1) 0%, rgba(106, 0, 133, 1) 100%);
+				z-index:10;
+			}
+			
+			.menuButton{
+			    border: 0.4vw solid #000000;
+				position: absolute;				
+				width: 20%;
+				right: -17%;
+				aspect-ratio: 1 / 1;
+				top:15%;
+				z-index:1;
+				border-bottom-right-radius:40%;
+				border-top-right-radius:40%;
+				cursor: pointer;
+				background: linear-gradient(225deg,rgba(45, 0, 194, 1) 0%, rgba(60, 0, 150, 1) 100%);
+
+			}
+			.menuButton:hover{
+				background: linear-gradient(225deg,rgba(36, 0, 153, 1) 0%, rgba(48, 0, 120, 1) 100%);
+			}
+			
+			.footerText{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none; 
+				position: absolute;
+				white-space: pre;
+				bottom:0%;
+				left:50%;
+				transform: translate(-50%,0%);		
+				text-align: center;
+				font-size:1.2vw;
+				z-index:2;
+
+			}
+		
+			.label{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				position: absolute;
+				white-space: pre;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -150%);
+				font-size: 4vh;
+				background: linear-gradient(90deg, rgb(0, 217, 255) 0%, rgb(255, 0, 255) 100%);
+				color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 100%;
+				z-index: 20;
+				line-height: 1;
+				transition: background-size 1.5s;
+
+			}
+			.label:hover{
+				background-size: 15%;
+				transition: background-size 1.5s;
+			}
+		
+			.mainIcon{
+				position: absolute; 		
+				top:50%; 
+				height: 85%;
+				aspect-ratio: 6.3/8;
+				transform: translateY(-50%);
+				cursor: pointer;
+				object-fit: contain;
+				transition: transform 0.2s;				
+			}
+			
+			.mainIcon:hover{
+				position: absolute; 
+				top:50%; 
+				transform: scale(1.03)  translateY(-50%);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+				transition: transform 0.2s;
+			}
+			
+			.footerIcon{
+				position: absolute; 		
+				top:50%; 
+				height: 70%;
+				aspect-ratio: 6.3/8;
+				transform: translateY(-50%);
+				cursor: pointer;
+				object-fit: contain;
+				transition: transform 0.2s;				
+			}
+			
+			.footerIcon:hover{
+				position: absolute; 
+				top:50%; 
+				transform: scale(1.03)  translateY(-50%);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+				transition: transform 0.2s;
+			}
+
+			.slider1{
+				position: absolute;
+				width: 32.5%;
+				height:80%;
+                left:75%;
+                transform: translateX(-50%);
+				top:12%;
+				z-index: 0;
+
+			}
+
+			.slider2{
+				position: absolute;
+				width: 32.5%;
+				height:80%;
+                left:25%;
+                transform: translateX(-50%);
+				top:12%;
+				z-index: 0;
+
+			}
+			
+			.sliderTextBlock{
+				width: 50%; height: 90%; position: absolute; left:4%; top: 8%
+			}
+
+			.sliderTextBlock2{
+				width: 50%; height: 90%; position: absolute; left:45%; top: 8%
+			}
+			
+
+			.radioButton {
+				  appearance: none;
+				  -webkit-appearance: none;
+				  -moz-appearance: none;
+				  display: inline-block;
+				  background-position: center;
+				  height: 100%;
+				  aspect-ratio: 1 / 1;
+				  border-radius: 20%; 
+				  background-size: cover;
+				  background-position: center;
+				  border: 0.2vw solid #b704c7;
+				  position: absolute;
+				  cursor: pointer;
+                  bottom: -50%;
+				  outline: none; 
+				  transform: translate(-50%,-50%);
+				  transition: border-color 0.3s;
+				
+			}
+			.radioButton:checked {
+				border-color: #0084ff; 
+				transition: border-color 0.3s;
+			}
+			.radioButton:checked:hover {
+				border-color: #841d88; 
+				transition: border-color 0.3s;
+			}
+			.radioButton:hover{
+				border: 0.2vw solid #014b97;
+				transition: border-color 0.3s;
+			}
+			.radioButton:active{
+				border: 0.2vw solid #1f00aa;
+				transition: border-color 0.3s;
+			}
+
+            .rectangle{
+				position: absolute;
+			    top: 0%;
+				border: 0.5vw solid rgba(14, 14, 14, 0.05);
+			    width: 100%;  
+				
+				height: 100%;  
+				background: rgba(14, 14, 14, 0.35);
+				z-index:0;
+			}
+
+			a {
+				color: #c8eefd;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none; 
+			}
+
+			a:link {
+				color: #c8eefd;
+			}
+
+			a:visited {
+				color: #fcaefc;
+			}
+
+			a:focus {
+				color: #c8eefd;
+			}
+
+			a:hover {
+				color: #bf74fd;
+			}
+
+			a:active {
+				color: #fc56e0;
+			}
+
+			.imageForHover{
+				border-radius: 100%; position: absolute; opacity: 1;  height:70%; transform: translateX(-50%);
+			}
+			.imageForHover:hover{
+				transform: scale(1.01) translateX(-50%);;
+				box-shadow: 0px 0px 2vh 1vh rgb(139, 139, 139);
+			}
+
+
+			.arrowForButton1{
+				position: absolute;
+				width: 100%;
+				transform: translate(-50%,-50%);  
+				z-index: 0;
+				filter: brightness(120%);
+								transition: filter 0.3s;
+
+
+			}
+			
+			.arrowForButton2{
+				position: absolute;
+				transform: translate(-50%,-50%);  
+				z-index: -1;
+				width: 110%;
+				filter: hue-rotate(80deg) brightness(180%);
+				transition: filter 0.3s;
+
+			}
+
+
+			.arrowButton{
+				position: absolute; 
+				opacity: 1; 
+				background: transparent; 
+				border: 0vh transparent;  
+				top:5%; 
+				transform: translate(-50%,-50%);  
+				left:0%;
+				width: 10.25%;
+		    	aspect-ratio: 1 / 1;
+
+			}
+			.arrowButton:hover .arrowForButton1{
+				filter: brightness(80%);
+				transition: filter 0.3s;
+			}
+			.arrowButton:hover .arrowForButton2{
+				filter: hue-rotate(0deg) brightness(150%);
+				transition: filter 0.3s;
+			}
+			.arrowButton:active .arrowForButton1{
+				filter: brightness(90%);
+				transition: filter 0.1s;
+
+
+			}
+			.arrowButton:active .arrowForButton2{
+				filter: hue-rotate(70deg) brightness(190%);
+				transition: filter 0.1s;
+
+			}
+
+			.contentText{
+				color: rgb(255, 255, 255);
+				font-size: 1.5vw;
+				text-align: justify;
+				margin: 0%;
+				padding-bottom: 2%;
+				text-indent: 7.5%;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.contentText2{
+				color: rgb(255, 255, 255);
+				font-size: 1.675vw;
+				text-align: justify;
+				margin: 0%;
+				padding-bottom: 2%;
+				text-indent: 7.5%;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.menuBoxForText{
+				border-radius: 7.5%; 
+				background: linear-gradient(135deg,rgba(55, 27, 148, 1) 0%,rgb(174, 0, 255) 50%, rgba(0, 162, 232, 1) 100%);
+				position: absolute; 
+				background-size: 100%;
+				transform: translate(-50%,-50%); 
+				border: #494bb3 solid 0.3vh;
+				width: 80%; 
+				height: 5%;
+				transition: background-size 0.75s ;
+
+			}
+			.menuBoxForText:hover{
+				background-size: 200%;
+				transition: background-size 0.75s ;
+			}
+			.menuBoxForText:hover .menuLinksText{
+				color: #ff7c7c;
+				transition: color 0.75s;
+
+			}
+
+			.menuLinksText{
+				cursor: pointer;
+				position: absolute; 
+				color: #ffffff;
+				transform: translateX(-50%); 
+				font-size:1.75vw; 
+				text-align: center; 
+				top:15%; 
+				left:50%; 
+				transition: color 0.75s;
+				text-decoration: none;
+			}
+
+			
+
+			.linksImagesContainer{
+				position: absolute;
+				width: 20%;
+				height: 54%; 
+				top: 35%; 
+				background: transparent; 
+				border: transparent;
+				z-index:0;
+			}
+
+			@media(max-width:1300px){
+				.linksImagesContainer{
+				position: absolute;
+				width: 35%;
+				height: 54%; 
+				left: -3%;
+				top: 35%; 
+				background: transparent; 
+				border: transparent;
+				z-index:0;
+			}
+			}
+
+			@media(max-width:700px){
+				.slider1{
+					position: absolute;
+					width: 70%;
+					height:50%;
+                	left:50%;
+					transform: translateX(-50%);
+					top:5%;
+					z-index: 0;
+				}
+				.slider2{
+					position: absolute;
+					width: 70%;
+					height:50%;
+                	left:50%;
+					transform: translateX(-50%);
+					top:5%;
+					z-index: 0;
+				}
+				.sliderTextBlock{
+				width: 90%; height: 32.5%; position: absolute; left:4%; top: 65%
+				}
+
+				.sliderTextBlock2{
+				width: 90%; height: 32.5%; position: absolute; left:4%; top: 63%
+				}
+
+				.contentText{
+					color: rgb(255, 255, 255);
+					font-size: 2.1vw;
+					text-align: justify;
+					margin: 0%;
+					padding-bottom: 2%;
+					text-indent: 7.5%;
+					font-family: Arial, Helvetica, sans-serif;
+		
+				}
+
+				.contentText2{
+					color: rgb(255, 255, 255);
+					font-size: 2.4vw;
+					text-align: justify;
+					margin: 0%;
+					padding-bottom: 2%;
+					text-indent: 7.5%;
+					font-family: Arial, Helvetica, sans-serif;
+		
+				}
+				
+				.label{
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none; 
+					user-select: none; 
+					position: absolute;
+					white-space: pre;
+					top:50%;
+					left:50%;
+					transform: translate(-50%,-150%);
+					font-size:5vw;
+					background-image: linear-gradient(90deg,rgb(0, 217, 255) 0%, rgb(255, 0, 255) 100%);
+					color: transparent;
+					background-clip: text;
+					z-index: 20;
+					line-height: 1;
+					background-size: 100%;
+					transition: background-size 1.5s;
+
+				}
+				.label:hover{
+					background-size: 15%;
+					transition: background-size 1.5s;
+				}
+
+				.menuDiv{
+				position: fixed;
+				width: 80%;  
+				height: 102%;  
+				z-index: 2;
+				top:-2%;	
+				left:-81%;
+				background: black;
+				
+				}
+
+				.menuButton{
+					border: 0.4vw solid #000000;
+					position: absolute;				
+					width: 40%;
+					right: -17%;
+					aspect-ratio: 1 / 1;
+					top:15%;
+					z-index:1;
+					border-bottom-right-radius:40%;
+					border-top-right-radius:40%;
+					cursor: pointer;
+					background: linear-gradient(225deg,rgba(45, 0, 194, 1) 0%, rgba(60, 0, 150, 1) 100%);
+
+				}
+				.menuButton:hover{
+					background: linear-gradient(225deg,rgba(36, 0, 153, 1) 0%, rgba(48, 0, 120, 1) 100%);
+				}	
+
+			.menuLinksText{
+				cursor: pointer;
+				position: absolute; 
+				color: #ffffff;
+				transform: translateX(-50%); 
+				font-size:4.1vw; 
+				text-align: center; 
+				top:15%; 
+				left:50%; 
+				transition: color 0.75s;
+				text-decoration: none;
+			}
+
+			.footerText{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none; 
+				position: absolute;
+				white-space: pre;
+				bottom:0%;
+				left:50%;
+				transform: translate(-50%,0%);		
+				text-align: center;
+				font-size:2.5vw;
+				z-index:2;
+
+				}
+
+
+				.imageForHover{
+				border-radius: 100%; position: absolute; opacity: 1;  height:50%; transform: translateX(0%);
+				}
+				.imageForHover:hover{
+					transform: scale(1.01) translateX(0%);;
+					box-shadow: 0px 0px 2vh 1vh rgb(139, 139, 139);
+				}
+
+				.linksImagesContainer{
+				position: absolute;
+				width: 50vw;
+				height: 54%; 
+				top: 35%; 
+				left: -6%;
+				background: transparent; 
+				border: transparent;
+				z-index:0;
+				}
+
+				.footerIcon{
+					position: absolute; 		
+					top:50%; 
+					height: 45%;
+					aspect-ratio: 6.3/8;
+					transform: translateY(-50%);
+					cursor: pointer;
+					object-fit: contain;
+					transition: transform 0.2s;				
+				}
+				
+				.footerIcon:hover{
+					position: absolute; 
+					top:50%; 
+					transform: scale(1.03)  translateY(-50%);
+					box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+					transition: transform 0.2s;
+				}	
+			}

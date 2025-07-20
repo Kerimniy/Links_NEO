@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/Kerimniy/Links_NEO@main/togglebutton.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta http-equiv="preload">
+		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+		<title>Карта сайта</title>	
+		<meta name="description"  content="Kerimniy. Карта сайта.">
+		<meta name="robots" content="all"/>
+		<meta name="robots" content="archive"/>
+		<meta name="author" content="Kerimniy">
+  		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logos/favicon.ico') }}">
+
+
+
+
+	</head>
+
+	<body onload="" style="height: 100vh;">
+		
+		<div class="header_header">
+			<p class="label">Карта сайта</p>
+			<a href="https://kerimniy.cloudpub.ru">
+			<img class="mainIcon" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+		</div>
+		
+		
+		<style>
+			.link{
+				position: absolute;
+				font-size: 2vw;
+				left: 50%;
+				background: linear-gradient(0deg,rgba(60, 0, 255, 0.5) 0%, rgba(165, 12, 147, 0.5) 40%, rgba(170, 0, 255, 0.5) 100%);
+				min-width: 70%;
+				background-size: 105%;
+				border-radius: 30vh;
+				box-shadow: 0 0 10vh 0.1vh #97299b;
+				text-align: center;
+				transform: translateX(-50%);
+			}
+			@media(max-width:700px){
+				.link{
+					position: absolute;
+					font-size: 4.2vw;
+					left: 50%;
+					background: linear-gradient(0deg,rgba(60, 0, 255, 0.5) 0%, rgba(165, 12, 147, 0.5) 40%, rgba(170, 0, 255, 0.5) 100%);
+					min-width: 70%;
+					background-size: 105%;
+					border-radius: 30vh;
+					box-shadow: 0 0 10vh 0.1vh #97299b;
+					text-align: center;
+					padding: 2%;
+					transform: translateX(-50%);
+				}
+			}
+		</style>
+		
+		
+		<div style="position: absolute; height: 65%; min-width: 90%; transform: translate(-50%,-40%); left: 50%; top: 50%;">
+			<a style="top: 10%;" class="link" href="{{hostname}}/">Главная</a>
+			<a style="top: 20%;" class="link" href="{{hostname}}/npps">NPPS</a>
+			<a style="top: 30%;" class="link" href="{{hostname}}/downloadfromgithub">Ссылка на скачивание с GitHub</a>
+			<a style="top: 40%;" class="link" href="{{hostname}}/kha331">Создать хэш kha331</a>
+			<a style="top: 50%;" class="link" href="{{hostname}}/download/shifr">Скачать kha331 (win)</a>
+		</div>
+		
+
+		<div class="bottomfooter" style="background-color: rgb(2, 2, 105); height: 12.5%; bottom: 0%;"> 
+			<a class="footerText" style="bottom: auto; top: 20%;" href="{{hostname}}/sitemap">Карта сайта</a>
+			<p class="footerText">Эта страница принадлежит Kerimniy и лицензирована <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+			<a class="footerIcon" style="right: 1%;" href="https://kerimniy.cloudpub.ru">
+				<img style="height: 100%;;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+
+			<div class="linksImagesContainer">
+				<a onclick="inDev()"><img class="imageForHover" src="static/logos/yg.svg" draggable="false" style="cursor: not-allowed; left:20%;top: 0%;" alt=" " ></a>
+				<a href="https://github.com/Kerimniy"><img class="imageForHover" src="static/logos/github.svg" draggable="false" style="left:40%;top: 0%;" alt=" " ></a>
+				<a href='https://t.me/Kerimniy'><img class="imageForHover" src="static/logos/telegram.svg" draggable="false" style="left:60%; top: 0%;" alt=" " ></a>
+				<a href='https://kerimniy.itch.io/'><img class="imageForHover" src="static/logos/itchio.svg" draggable="false" style="left:80%; top: 0%;" alt=" " ><div style="background-color: white; box-sizing: border-box;"></div></a>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

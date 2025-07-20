@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/Kerimniy/Links_NEO@main/togglebutton.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta http-equiv="preload">
+		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+		<title>Создать ссылку на скачивание файла с GitHub.</title>	
+		<meta name="description"  content="Kerimniy. Создать ссылку на скачивание файла с GitHub по ссылке на ваш ресурс.">
+		<meta name="robots" content="all"/>
+		<meta name="robots" content="archive"/>
+		<meta name="author" content="Kerimniy">
+  		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logos/favicon.ico') }}">
+
+
+		<style>
+			
+			.input1{ 
+					width: 75%;
+					height: 5%;
+					margin-left: 0;
+					margin-bottom: 0%;
+					background-position: 10px 10px; 
+					background-repeat: no-repeat;
+					font-size: 1.55vw;
+					color: rgb(230, 230, 230);;
+					background: linear-gradient(rgb(25, 2, 126), rgb(38, 2, 105));
+					padding: 12px 20px 12px 40px; 
+					transform: translate(-50%,-50%);
+					border-radius: 1.5vh; 
+					border: 0.75vh solid #535891;
+
+			} 
+
+			.input1::placeholder {
+ 				 color: rgb(230, 230, 230);
+				 font-size: 1.55vw;
+			}
+
+
+			.mainButton{
+				position: absolute; 
+				transform: translate(-50%,-50%); 
+				border-radius: 1.5vh; 
+				font-size: 5vh;
+				color:rgb(230, 230, 230);
+				background: linear-gradient(125deg,rgba(55, 27, 148, 1) 0%, rgb(121, 5, 121) 50%, rgba(0, 162, 232, 1) 100%); 
+				border: 0.75vh solid #535891;
+				background-size: 100%;
+				cursor: pointer;
+				transition: background-size 0.5s;
+			}
+			.mainButton:hover{
+				background-size: 350%;
+				transition: background-size 0.5s;
+			}
+
+			@media(max-width:700px){
+				.mainButton{
+				position: absolute; 
+				transform: translate(-50%,-50%); 
+				border-radius: 3vh; 
+				font-size: 3vw;
+				color: #c8eefd;
+				background: linear-gradient(125deg,rgba(55, 27, 148, 1) 0%, rgb(121, 5, 121) 50%, rgba(0, 162, 232, 1) 100%); 
+				border: 1.2vw solid #535891;
+				background-size: 100%;
+				cursor: pointer;
+				
+				transition: background-size 0.5s;
+				}
+				.input1{ 
+					width: 70%;
+					height: 10%;
+					margin-left: 0;
+					margin-bottom: 0%;
+					border-radius: 0px;
+					background-position: 10px 10px; 
+					background-repeat: no-repeat;
+					font-size: 1.55vw;
+					color: rgb(230, 230, 230);;
+					background: linear-gradient(rgb(25, 2, 126), rgb(38, 2, 105));
+					padding: 12px 20px 12px 40px; 
+					transform: translate(-50%,-50%);
+					border-radius: 1.5vh; 
+					border: 0.75vh solid #535891;
+
+				} 
+
+				.input1::placeholder {
+					color: rgb(230, 230, 230);
+					font-size: 2.55vw;
+				}
+
+
+				.label{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none; 
+				user-select: none; 
+				position: absolute;
+				white-space: pre;
+				top:50%;
+				left:50%;
+				transform: translate(-50%,-150%);
+				font-size:4.5vw;
+				background-image: linear-gradient(90deg,rgb(0, 217, 255) 0%, rgb(255, 0, 255) 100%);
+				color: transparent;
+				background-clip: text;
+				z-index: 20;
+				line-height: 1;
+				background-size: 100%;
+				transition: background-size 1.5s;
+
+				}
+				.label:hover{
+					background-size: 15%;
+					transition: background-size 1.5s;
+				}
+				.mainIcon{
+					display: none
+				}
+				.linksImagesContainer{
+					width: 60%;
+					height: 40%;
+				}
+			}
+		</style>
+		
+
+		<script>
+			let inputField;
+			let generateButton;
+			let tb;
+			let forbidenChars = ["<", ">", '"', '{', '}', '|', '^',]
+			function init(){
+				inputField = document.getElementById("input_field");
+				generateButton = document.getElementById("generateButton");
+				tb=  document.getElementById("TP1");
+			}
+
+
+			function GenerateLink(){
+				if (Boolean(Number(tb.dataset.st))){
+					GenerateLink_JS();
+				}
+				else{
+					GenerateLink_Server();
+				}
+			}
+
+
+			function GenerateLink_JS(){
+		
+
+				let url = inputField.value;
+				let elements = url.split("/");
+				ifCorrectUrl = (url.slice(0,8)==="https://" || url.slice(0,7)==="http://")  &&( url.slice(0,7)==="http://"?url.indexOf(".",8)!==-1:url.indexOf(".",9)!==-1) && (url.slice(0,7)==="http://"? (url[url.indexOf(".",7)+2]!=undefined):(url[url.indexOf(".",8)+2]!=undefined)) && ifContainSymbol(forbidenChars,url)===false;
+				if (!ifCorrectUrl){
+					inputField.value ="URL некорректен.";
+				}
+				else if (elements[2].slice(0,6)!=="github" && elements[2].slice(0,21)!=="raw.githubusercontent" ){
+					inputField.value ="Поддерживается только GitHub, если вы считаете что нужна поддержка другого сервиса, свяжитесь со мной.";
+				}
+				else{
+					let location=window.location.href.toString();
+					console.log("/*/"+url);
+					inputField.value = location.slice(0,location.length-19)+"downloadfromgithub?js-url="+url;
+				}
+			}
+
+			function GenerateLink_Server(){
+				let url = inputField.value;
+				let elements = url.split("/");
+				ifCorrectUrl = (url.slice(0,8)==="https://" || url.slice(0,7)==="http://")  &&( url.slice(0,7)==="http://"?url.indexOf(".",8)!==-1:url.indexOf(".",9)!==-1) && (url.slice(0,7)==="http://"? (url[url.indexOf(".",7)+2]!=undefined):(url[url.indexOf(".",8)+2]!=undefined)) && ifContainSymbol(forbidenChars,url)===false;
+				if (!ifCorrectUrl){
+					inputField.placeholder ="URL некорректен.";
+					inputField.value ="";
+				}
+				else if (elements[2].slice(0,6)!=="github" && elements[2].slice(0,21)!=="raw.githubusercontent"){
+					inputField.value ="Поддерживается только GitHub, если вы считаете что нужна поддержка другого сервиса, свяжитесь со мной.";
+				}
+				else{
+					let location=window.location.href.toString();
+					inputField.value = location.slice(0,location.length-19)+"gitload?url="+url;
+				}
+			}
+
+			function GoToJSLink(){
+				urlParams = new URLSearchParams(window.location.search);
+				let params={}
+				urlParams.forEach((p, key) => {
+					params[key] = p;
+				});
+				let js_url = params["js-url"];
+				if (js_url === undefined){
+					js_url ="";
+				}
+				let elements = js_url.split("/");
+				let output_url = js_url;
+				let ifCorrectUrl = (js_url.slice(0,8)==="https://" || js_url.slice(0,7)==="http://")  &&( js_url.slice(0,7)==="http://"?js_url.indexOf(".",8)!==-1:js_url.indexOf(".",9)!==-1) && (js_url.slice(0,7)==="http://"? (js_url[js_url.indexOf(".",7)+2]!=undefined):(js_url[js_url.indexOf(".",8)+2]!=undefined)) && ifContainSymbol(forbidenChars,js_url)===false;
+				
+				if (ifCorrectUrl){
+					if (elements[2].slice(0,6)==="github"){
+						output_url ="https://raw.githubusercontent.com/"+ js_url.slice(19, js_url.length);
+						output_url = output_url.replace("/blob/","/");
+						output_url = output_url.replace("/tree/","/");
+					}
+					js_url = output_url
+					let xhr = new XMLHttpRequest();
+					xhr.responseType = "blob";
+
+					xhr.open('GET', js_url);
+
+					xhr.send();
+
+					xhr.onload = function() {
+					if (xhr.status != 200) { 
+						alert(`Ошибка ${xhr.status}: ${xhr.statusText}`); 
+					} else { 
+						const blob = xhr.response;
+						const link = document.createElement('a');
+						link.href = URL.createObjectURL(blob);
+						let name = js_url.split("/")[js_url.split("/").length-1];
+						if (!name.includes(".")){
+							ext =blob.type.split("/")[blob.type.split("/").length-1];
+							name = "undefined."+ext;
+						}
+						link.download = name;
+						link.click();
+						URL.revokeObjectURL(link.href);
+						}
+					};
+				}
+				else{
+
+				}
+
+				
+
+				
+			}
+
+			function ifContainSymbol(array1,string1){
+				let res=false;
+				for (i=0;i<array1.length-1;i++){
+					res = res || string1.includes(array1[i]);
+				}
+				return res
+			}
+
+
+			function copyToClipboard() {
+				navigator.clipboard.writeText(inputField.value)
+			}
+			function Clear(){
+				inputField.value ="";
+			}
+		</script>
+
+
+		<style>
+			.customToggle{
+				position: absolute; 
+				width: 100%;
+				height: 100%;
+				transform: translateX(-50%);
+				background-color: #000000;
+				background-size: cover;
+				border-radius: 40vh;
+				border: #6f00ff solid;
+				cursor: pointer;
+			}
+
+			.customToggle:hover{
+				background-color: #390050;
+				border: #2600ff solid;
+			}
+
+			.customToggle:hover .TogglePoint{
+				border: #2600ff solid;
+				background-color: #390050;
+			}
+
+			.customToggle:active{
+				background-color: #742f70;
+				border: #ff0000 solid;
+			}
+
+			.customToggle:active .TogglePoint{
+				border: #ff0000 solid;
+				background-color: #742f70;
+			}
+
+			.TogglePoint{
+				position: absolute; 
+				top: 50%; 
+				height: 100%;
+				transform: translateY(-50%);
+				aspect-ratio: 1/1;
+				background-color: #000000;
+				background-size: cover;
+				border-radius: 100vh;
+				border: #6f00ff solid;
+				margin-left: -2%;
+				
+			}
+
+			@media(max-width:700px){
+
+				.customToggle{
+					position: absolute; 
+					top: -380%;
+					width: 300%;
+					height: 300%;
+					transform: translateX(-50%);
+					background-color: #000000;
+					background-size: cover;
+					border-radius: 40vh;
+					border: #6f00ff solid;
+					cursor: pointer;
+				}
+
+				.customToggle:hover{
+					background-color: #390050;
+					border: #2600ff solid;
+				}
+
+				.customToggle:hover .TogglePoint{
+					border: #2600ff solid;
+					background-color: #390050;
+				}
+
+				.customToggle:active{
+					background-color: #742f70;
+					border: #ff0000 solid;
+				}
+
+				.customToggle:active .TogglePoint{
+					border: #ff0000 solid;
+					background-color: #742f70;
+				}
+
+			}
+
+
+		</style>
+
+
+
+
+
+	</head>
+
+	<body onload="init(); GoToJSLink()" style="height: 100vh;">
+		
+		<div class="header_header">
+			<p class="label">Создайте свою ссылку для скачивания с GitHub</p>
+			<a href="https://kerimniy.cloudpub.ru">
+			<img class="mainIcon" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+		</div>
+		
+		<div style=" position:absolute;top: 22.5%; transform: translateX(-50%); left: 50%;width: 6%;aspect-ratio: 3/1;">
+			<p style="position: absolute; text-align: right;font-size: 2vh; color: #c8eefd; transform: translate(-125%,-50%); width: 500%; margin-right: 500%;">На стороне сервера</p>
+			<p style="position: absolute; text-align: left;font-size: 2vh; color: #c8eefd; transform: translate(-75%,-50%); width: 500%; margin-left: 500%;">На стороне клиента</p>
+			<div onclick="ToggleButton('TP1')" id="TG1" class="customToggle" >
+				<div id="TP1" data-st="0" class="TogglePoint"></div>
+			</div>
+		</div>
+		
+
+		<input class="input1" id="input_field" type="text" placeholder="Введите URL..."  style="position: absolute; top: 35%; left: 50%;"><br>
+		<button id="generateButton" onclick="Clear()" class="mainButton" style="height: 7.5%; width: 25%; left: 23%; top: 50%; " >Очистить</button>
+		<button id="generateButton" onclick="GenerateLink()" class="mainButton" style="height: 7.5%; width: 25%; left: 50%; top: 50%; " >Создать</button>
+		<button id="generateButton" onclick="copyToClipboard()" class="mainButton" style="height: 7.5%; width: 25%; left: 77%; top: 50%; " >Скопировать</button>
+		
+		
+		<div class="bottomfooter" style="background-color: rgb(2, 2, 105); bottom: 0%; height: 15%;"> 
+			<p class="footerText">Эта страница принадлежит Kerimniy и лицензирована <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+			<a class="footerIcon" style="right: 1%;" href="https://kerimniy.cloudpub.ru">
+				<img style="height: 100%;;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+			<div class="linksImagesContainer">
+				<a onclick="inDev()"><img class="imageForHover" src="{{ url_for('static', filename='logos/yg.svg') }}" draggable="false" style="border-radius: 100%; cursor: not-allowed; position: absolute; opacity: 1; left:20%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href="https://github.com/Kerimniy"><img class="imageForHover" src="{{ url_for('static', filename='logos/github.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:40%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href='https://t.me/Kerimniy'><img class="imageForHover" src="{{ url_for('static', filename='logos/telegram.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:60%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href='https://kerimniy.itch.io/'><img class="imageForHover" src="{{ url_for('static', filename='logos/itchio.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:80%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ><div style="background-color: white; box-sizing: border-box;"></div></a>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

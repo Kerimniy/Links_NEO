@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta http-equiv="preload">
+		<link href="static/css/styles.css" rel="stylesheet">
+		<script defer src="static/js/script.js"></script>
+		<title>Kerimniy - Главная страница</title>	
+		<meta name="description"  content="Приложения, игры, ссылки Kerimniy.">
+		<meta name="robots" content="all"/>
+		<meta name="robots" content="archive"/>
+		<meta name="author" content="Kerimniy">
+  		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logos/favicon.ico') }}">
+
+		<style>
+			.ContentTextLabel{
+				font-size: 2.4vw; 
+				padding-bottom: 2%; 
+				color: rgb(255, 255, 255);
+				text-align: justify;
+				margin: 0%;
+				padding-bottom: 2%;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+
+			}
+			@media(max-width:700px){
+				.ContentTextLabel{
+					font-size: 3.5vw; 
+					padding-bottom: 2%; 
+					color: rgb(255, 255, 255);
+					margin: 0%;
+					padding-bottom: 2%;
+					font-family: Arial, Helvetica, sans-serif;
+					text-align: center;
+
+				}
+			}
+		</style>
+		
+	</head>
+
+	<body id="1" onload="Start()">
+		
+		<div class="header_header">
+			<p class="label"> Kerimniy Ссылки NEO</p>
+			<a href="https://kerimniy.cloudpub.ru">
+			<img class="mainIcon" style="left: 1%;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+		</div>
+		
+		<div id="SliderBlock1" style="position: absolute; width: 100%; height:30%; top: 10%; " >
+
+			<div class="rectangle" style="width:90%; height: 115%; left:5%; top: 0%; border-radius: 5%;" >				
+				<div class="sliderTextBlock">
+					<p class="ContentTextLabel">
+						Приложения с <a style="text-decoration: none;" href="https://github.com/Kerimniy">GitHub</a> 
+					</p>
+					<p class="contentText">
+						<a style="text-decoration: none;" href="https://kerimniy.cloudpub.ru/calc">KHA-331_APP</a> - приложение для хэширования вашей строки. KHA-331 - хэш алгоритм генерирующий хэш длиной 331 бит (64 символа, 0-9, a-z) на основе побитовых операций, реализован на <a href="https://github.com/Kerimniy/KHA-331/blob/main/KHA331.cs" style="text-decoration: none;">C#</a> и <a href="https://github.com/Kerimniy/KHA-331/blob/main/KHA331.py" style="text-decoration: none;">Python</a>. 
+					</p>
+					<p class="contentText">
+						<a style="text-decoration: none;" href="https://github.com/Kerimniy/bindm">Bindm</a>. Простое приложение, которое может регулировать громкость системы (повышать, понижать громкость или вообще отключить звук) с помощью комбинации функциональных клавиш (от 1 до 3) и одной любой клавиши (например, CTRL + SHIFT + ALT + H).
+					</p>
+					<p class="contentText">
+						<a style="text-decoration: none;" href="https://github.com/Kerimniy/bindp">Bindm</a>. Простое приложение, которое может запускать любое (почти) приложение, открыв его в проводнике, с помощью комбинации функциональных клавиш (от 1 до 3) и одной любой клавиши (например, CTRL + SHIFT + ALT + H).
+					</p>
+				</div>				
+			</div>
+
+			<div  onclick="smoothscroll('1')" class="slider1">
+				<img id="img0" src="static/images/kha-app.webp" draggable="false" style="border:1vh solid #00000030; border-radius: 4%; position: absolute; opacity: 1; left:50%; width:100%; aspect-ratio: 6.5 / 4.8; transform: translateX(-50%); " alt=" "  >
+				<img id="img1" src="static/images/bindm.webp" draggable="false" style="border:1vh solid #00000030; border-radius: 4%; position: absolute; opacity: 0; left:50%; width:100%; aspect-ratio: 6.5 / 4.8; transform: translateX(-50%);" alt=" " >
+				
+				<div style="position: absolute; transform: translateX(-50%); width:100%;height:15%; opacity: 1; left:50%; top: 110%;">
+					<input class="radioButton" style="left:10%; aspect-ratio: 1 / 1; background:url('static/images/kha-app.webp'); background-size: cover;background-position: center;" type="radio" checked="checked" onchange="changeImg(0,imagesPack1,pathsPack1,radioButtonsPack1);pauseInterval()" name="s1" value="0" />
+					<input class="radioButton" style="left:30%; aspect-ratio: 1 / 1; background:url('static/images/bindm.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(1,imagesPack1,pathsPack1,radioButtonsPack1);pauseInterval()" name="s1" value="1" />
+					<input class="radioButton" style="left:50%; aspect-ratio: 1 / 1; background:url('static/images/bindp.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(2,imagesPack1,pathsPack1,radioButtonsPack1);pauseInterval()" name="s1" value="2" />
+					<input class="radioButton" style="left:70%; background:url('static/images/git-links.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(3,imagesPack1,pathsPack1,radioButtonsPack1);pauseInterval()" name="s1" value="3" />
+					<input class="radioButton" style="left:90%; background:url('static/images/kha-331.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(4,imagesPack1,pathsPack1,radioButtonsPack1);pauseInterval()" name="s1" value="4" />
+					
+					<button onclick="changeImg('-',imagesPack1,pathsPack1,radioButtonsPack1); pauseInterval()" style="transform: rotate(180deg); left: -5%;" class="arrowButton">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow1.svg" class="arrowForButton1" draggable="false">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow2.svg" class="arrowForButton2" draggable="false">
+					</button>
+					<button onclick="changeImg('+',imagesPack1,pathsPack1,radioButtonsPack1); pauseInterval()" style="transform: rotate(0deg);position: absolute; top:7%; opacity: 1; left:96.5%;" class="arrowButton">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow1.svg" class="arrowForButton1" draggable="false">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow2.svg" class="arrowForButton2" draggable="false">
+					</button>
+					
+				</div>
+			</div>
+		</div>
+
+		<div id="2" style="position: absolute; width: 0%; height:0%; top: 41%"></div>
+
+		<div id="SliderBlock2" style="position: absolute; width: 100%; height:30%; top: 50.75%; " >
+
+			<div class="rectangle" style="width:90%; height: 115%; left:5%; top: 0%; border-radius: 5%;" >				
+				<div  class="sliderTextBlock2">
+					<p class="ContentTextLabel">
+						Игры на Unity 
+					</p>
+					<p class="contentText2">
+						<a style="text-decoration: none;" href="https://github.com/Kerimniy/The-Space-Seeker-webgl-">The Space Seeker</a> - игра, где ты на космическом корабле ищешь потерянные запчасти среди астероидов. На данный момент игра доступна для скачивания на <a style="text-decoration: none;" href="https://kerimniy.itch.io/tss">Itch.io</a> или <a style="text-decoration: none;" href="https://yandex.ru/games/app/418557?draft=true&lang=ru" >Яндекст играх [Снято с публикации]</a>. Игра поддерживает только десктопные платформы.
+					</p>
+					<p class="contentText2">
+						<a style="text-decoration: none;" href="{{hostname}}/npps">Симулятор управления АЭС [В разработке]</a> - игра где ты управляешь атомной электростанцие, изменять мощность, чтобы она соответсвовала текущей квоте. Управление осуществляется регулирующими стержнями и циркуляционными насосами. На данный момент игра доступна на <a style="text-decoration: none;" href="https://yandex.ru/games/app/451207?draft=true&lang=ru" >Яндекст играх [Черновик]</a>. Игра поддерживает как десктоп, так и мобильные платформы. 
+					</p>
+				</div>		
+			</div>
+
+			<div onclick="smoothscroll('2')" class="slider2" >
+				<img id="img2" src="static/images/npps0.webp" draggable="false" style="border:1vh solid #00000030; border-radius: 4%; position: absolute; opacity: 1; left:50%; width:100%; aspect-ratio: 6.5 / 4.8; transform: translateX(-50%); " alt=" "  >
+				<img id="img3" src="static/images/npps1.webp" draggable="false" style="border:1vh solid #00000030; border-radius: 4%; position: absolute; opacity: 0; left:50%; width:100%; aspect-ratio: 6.5 / 4.8; transform: translateX(-50%);" alt=" " >
+				
+				<div style="position: absolute; transform: translateX(-50%); width:100%;height:15%; opacity: 1; left:50%; top: 110%">
+					<input class="radioButton" style="left:10%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps0.webp'); background-size: cover;background-position: center;" type="radio" checked="checked" onchange="changeImg(0,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s2" value="0" />
+					<input class="radioButton" style="left:30%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps1.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(1,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s2" value="1" />
+					<input class="radioButton" style="left:50%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps2.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(2,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s2" value="2" />
+					<input class="radioButton" style="left:70%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/tss0.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(3,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s2" value="3" />
+					<input class="radioButton" style="left:90%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/tss1.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(4,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s2" value="4" />
+					
+					<button onclick="changeImg('-',imagesPack2,pathsPack2,radioButtonsPack2); pauseInterval()" style="transform: rotate(180deg); left: -5%;" class="arrowButton">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow1.svg" class="arrowForButton1" draggable="false">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow2.svg" class="arrowForButton2" draggable="false">
+					</button>
+					<button onclick="changeImg('+',imagesPack2,pathsPack2,radioButtonsPack2); pauseInterval()" style="transform: rotate(0deg);position: absolute; top:7%; opacity: 1; left:96.5%;" class="arrowButton">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow1.svg" class="arrowForButton1" draggable="false">
+						<img src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/arrow2.svg" class="arrowForButton2" draggable="false">
+					</button>
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="menu"  class="menuDiv">
+	
+			<div class="menuBg">
+				<div style="position: absolute; width: 85%; height: 90%; top: 5%; padding: 7.5%;" >
+					<p class="menuLinksText" style="top: -3%; left:50%; cursor: default;">Ссылки</p>
+
+					<a class="menuBoxForText" style="top:10%; left:50%;" onclick="smoothscroll('1')">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Приложения </p>
+					</a>
+
+					<a class="menuBoxForText" style="top:20%; left:50%;" onclick="smoothscroll('2')">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Игры </p>
+					</a>
+
+					<a class="menuBoxForText" style="top:30%; left:50%;" onclick="inDev()">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">TSS</p>
+					</a>
+
+					<a class="menuBoxForText" style="top:40%; left:50%;" href="{{hostname}}/npps">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">NPPS</p>
+					</a>
+
+					<p class="menuLinksText" style="width: 97.5%; top:43%; cursor: default;">Те самые, легендарные Ссылки</p>
+
+					
+					<a class="menuBoxForText" style="top:60%; left:50%;" href="https://t.me/Kerimniy">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Телеграм</p>
+					</a>
+
+					<a class="menuBoxForText" style="top:70%; left:50%;" href="https://github.com/Kerimniy">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Гитхаб</p>
+					</a>
+					
+					<a class="menuBoxForText" style="top:80%; left:50%;" href="https://kerimniy.itch.io/">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">itch.io</p>
+					</a>
+	
+					<a class="menuBoxForText" style="top:90%; left:50%;" onclick="inDev()">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%); width: 100%;">Яндекс Игры</p>
+					</a>
+				</div>
+			</div> 
+
+
+			<button class="menuButton" style="width:20%" onclick="dvizh2()" >
+				<img id="arrow" style="position: absolute; pointer-events: none; transform: translate(-50%,-50%);  top:50%; left:70%; width: 75%; " src="https://img.icons8.com/?size=100&id=39790&format=png&color=000000" alt="Фото">
+			</button>
+		</div>
+		
+
+
+
+		<div class="bottomfooter" style="background-color: rgb(2, 2, 105);"> 
+			<a class="footerText" style="bottom: auto; top: 20%;" href="{{hostname}}/sitemap">Карта сайта</a>
+			<p class="footerText">Эта страница принадлежит Kerimniy и лицензирована <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+			<a class="footerIcon" style="right: 1%;" href="https://kerimniy.cloudpub.ru">
+				<img style="height: 100%;;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+
+			<div class="linksImagesContainer">
+				<a onclick="inDev()"><img class="imageForHover" src="static/logos/yg.svg" draggable="false" style="cursor: not-allowed; left:20%;top: 0%;" alt=" " ></a>
+				<a href="https://github.com/Kerimniy"><img class="imageForHover" src="static/logos/github.svg" draggable="false" style="left:40%;top: 0%;" alt=" " ></a>
+				<a href='https://t.me/Kerimniy'><img class="imageForHover" src="static/logos/telegram.svg" draggable="false" style="left:60%; top: 0%;" alt=" " ></a>
+				<a href='https://kerimniy.itch.io/'><img class="imageForHover" src="static/logos/itchio.svg" draggable="false" style="left:80%; top: 0%;" alt=" " ><div style="background-color: white; box-sizing: border-box;"></div></a>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

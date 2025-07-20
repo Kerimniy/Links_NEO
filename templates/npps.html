@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta http-equiv="preload">
+		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+		<title>NPPS</title>	
+		<meta name="description"  content="Симулятор управления аэс | NPPS | Kerimniy">
+		<meta name="robots" content="all"/>
+		<meta name="robots" content="archive"/>
+		<meta name="author" content="Kerimniy">
+  		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logos/favicon.ico') }}">
+
+		<style>
+			.slider3{
+				position: absolute;
+				width: 100%;
+				height:100%;
+				top:0%;
+				z-index: 0;
+
+			}
+
+			.body1{
+				position: relative;
+				height: auto;
+				min-height: 100vh;
+				margin: 0;
+				padding: 0;
+				background: rgb(2, 2, 105);
+			}
+
+			.ContentTextLabel{
+				font-size: 2.4vw; 
+				padding-bottom: 2%; 
+				color: rgb(255, 255, 255);
+				text-align: justify;
+				margin: 0%;
+				padding-bottom: 2%;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+
+			}
+
+			.rectangle1{
+				position: absolute;
+			    top: 0%;
+				border: 0.5vw solid rgba(14, 14, 14, 0.05);
+			    width: 100%;  
+				background: rgba(14, 14, 14, 0.35);
+				z-index:0;
+			}
+
+			@media(max-width:700px){
+				.ContentTextLabel{
+					font-size: 3.5vw; 
+					padding-bottom: 2%; 
+					color: rgb(255, 255, 255);
+					margin: 0%;
+					padding-bottom: 2%;
+					font-family: Arial, Helvetica, sans-serif;
+					text-align: center;
+
+				}
+			}
+		</style>
+		
+		<script>
+
+			let intervalId3;
+			let imagesPack3 = [document.getElementById("img5"),document.getElementById("img6")];
+			let pathsPack3 = ["{{ url_for('static', filename='npps/npps_img1.webp') }}","{{ url_for('static', filename='npps/npps_img2.webp') }}","{{ url_for('static', filename='npps/npps_img3.webp') }}","{{ url_for('static', filename='npps/npps_img4.webp') }}","{{ url_for('static', filename='npps/npps_img5.webp') }}"];
+			let bs
+
+			let ct;
+			let img;
+			let content;
+			let tr;
+			let trp
+			function initialize(){
+				
+				ct.style.width = (window.innerWidth)+"px";
+				ct.style.height = (window.innerHeight)+"px";
+				content.style.top = (img.offsetHeight+(window.innerHeight*0.07)*0.875)+"px";
+			}
+			function st(){
+				imagesPack3 = [document.getElementById("img5"),document.getElementById("img6")];
+				pathsPack3 =  ["{{ url_for('static', filename='npps/npps_img1.webp') }}","{{ url_for('static', filename='npps/npps_img2.webp') }}","{{ url_for('static', filename='npps/npps_img3.webp') }}","{{ url_for('static', filename='npps/npps_img4.webp') }}","{{ url_for('static', filename='npps/npps_img5.webp') }}"];
+				bs  = document.getElementsByName("s3");
+
+				setInterval(() => d() ,7000);
+				
+				ct = document.getElementById("ct");
+				content = document.getElementById("content");
+				img = document.getElementById("img5");
+
+				imagesPack3[0].onload = () => {
+  			console.log(`Изображение0 загружено: ${imagesPack3[0].src}`);
+		};
+		imagesPack3[1].onerror = () => {
+  			console.error(`Ошибка загрузки изображения1: ${imagesPack3[1].src}`);
+		};
+
+		imagesPack3[1].onload = () => {
+  			console.log(`Изображение1 загружено: ${imagesPack3[1].src}`);
+		};
+		imagesPack3[0].onerror = () => {
+  			console.error(`Ошибка загрузки изображения0: ${imagesPack3[0].src}`);
+		};
+
+			}
+			function d(){
+				changeImg("+",imagesPack3,pathsPack3,bs);
+				
+			}
+			window.addEventListener('resize', () => {
+            	initialize();
+        	});
+
+		function changeImg1(_type,images,paths){
+			
+			if (images[0].dataset.imageNum === undefined) {images[0].dataset.imageNum = "0"}
+			
+			let imageNum = Number(images[0].dataset.imageNum);
+			if (_type == "+"){imageNum +=1;} else{imageNum -=1;}
+			
+			if ((imageNum)>4){imageNum=0;}else if (imageNum<0){imageNum=4;}
+					
+			try{
+				if (_type == "+" || _type == "-"){images[Math.abs(Math.round(images[0].style.opacity))].src = paths[Math.abs(imageNum)]; }
+				
+			}	
+			catch(error){
+				console.log(error);
+			}
+
+
+			gsap.to(images[0], { opacity:Math.abs(Math.round(images[1].style.opacity)), duration: 0.5 });
+			gsap.to(images[1], { opacity: Math.abs(Math.round(images[0].style.opacity)), duration: 0.5 });	
+			
+			images[0].dataset.imageNum = String(imageNum);
+
+			
+		}
+
+		
+
+		</script>
+
+	</head>
+
+	<body class="body1" id="1" onload="st(); initialize()">
+		
+		<div class="header_header">
+			<p class="label">Симулятор АЭС</p>
+			<a href="https://kerimniy.cloudpub.ru">
+			<img class="mainIcon" style="left: 1%;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+		</div>
+
+		<div id="ct" style="position: fixed; top: 7%;">
+			<div  onclick="smoothscroll('1')" class="slider3">
+				<img id="img5" src="{{ url_for('static', filename='images/npps/npps_img1.webp') }}" draggable="false" style="position: absolute; opacity: 1; width:100%; aspect-ratio: 16 / 9; left: 50%; transform: translateX(-50%); " alt=" "  >
+				<img id="img6" src="{{ url_for('static', filename='images/npps/npps_img2.webp') }}" draggable="false" style="position: absolute; opacity: 0; width:100%; aspect-ratio: 16 / 9; left: 50%; transform: translateX(-50%);" alt=" " >	
+			
+				<div style="position: absolute; transform: translateX(-50%); width:10%;height:1.5%; opacity: 1; left:-500%; top: 110%">
+					<input class="radioButton" style="left:10%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps0.webp'); background-size: cover;background-position: center;" type="radio" checked="checked" onchange="changeImg(0,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s3" value="0" />
+					<input class="radioButton" style="left:30%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps1.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(1,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s3" value="1" />
+					<input class="radioButton" style="left:50%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/npps2.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(2,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s3" value="2" />
+					<input class="radioButton" style="left:70%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/tss0.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(3,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s3" value="3" />
+					<input class="radioButton" style="left:90%; height: 100%; aspect-ratio: 1 / 1; background:url('static/images/tss1.webp'); background-size: cover;background-position: center;" type="radio" onchange="changeImg(4,imagesPack2,pathsPack2,radioButtonsPack2);pauseInterval()" name="s3" value="4" />
+					
+				</div>
+			
+			</div>
+		</div>
+		
+		<div id="content" style="position: absolute;top:15%; box-shadow: 0px 0.2vw 8vw 3vw rgb(42, 31, 88); left: 0%; 	min-height: 55vh; width: 100%; padding-top: 10%;padding-bottom: 10%;  background: linear-gradient(135deg, rgba(7, 0, 133, 1) 0%, rgba(94, 0, 78, 1) 40%, rgba(140, 0, 255, 1) 100%);">
+			<div id="2" style="position: absolute; width: 0%; height:0%; top: 0%"></div>
+			<div class="rectangle1" style="display: block;position:relative;padding-top: 0.5%;padding-bottom: 2.5%; width: 81%; transform: translate(-50%,0); left:50%; top:50%; border-radius: 5vh;" >				
+				<p class="ContentTextLabel" >
+					Описание 
+				</p>
+				<p class="contentText2" style="width: 90%; position: relative; left: 5%; word-spacing:0.2vw; line-height: 1.5;">
+					Симулятор управления атомной электростанцией представляет собой компьютерную игру, в которой игрок принимает на себя роль оператора АЭС, 
+					ответственного за регулирование мощности реактора в соответствии с установленными квотами энергопотребления. Для достижения этой цели 
+					используются регулирующие стержни и циркуляционные насосы, которые позволяют управлять тепловым режимом реактора и поддерживать его в стабильном состоянии.
+					На данный момент данная игра доступна для пользователей на платформе Яндекс.Игры. Она поддерживает десктопные компьютеры и мобильные устройства.	
+				</p>
+				<p class="ContentTextLabel">
+					Как играть 
+				</p>
+				<p class="contentText2" style=" word-spacing:0.2vw;width: 90%; position: relative; left: 5%; line-height: 1.5;">
+					Для того чтобы понять, как играть, вам следует разобраться в том как работает АЭС, что такое реактивность, и что на неё влияет, что такое ГЦН и
+					 стержни управления. Чтобы быстро разобраться в игровых понятиях можете прочитать краткое  <a style="text-decoration: none;" href="{{manual_url}}">руководство</a>
+				</p>
+				<p class="ContentTextLabel">
+					Где играть 
+				</p>
+				<p class="contentText2" style=" word-spacing:0.2vw; padding-bottom: 2.5%; width: 90%; position: relative; left: 5%; line-height: 1.5;">
+					На данный момент игра доступна в качестве черновика на  <a style="text-decoration: none;" href="https://yandex.ru/games/app/451207?draft=true&lang=ru">Яндекс играх</a>
+					(версия "В разработке") в дальнейшем планируется релиз на Itch.IO
+				</p>
+			</div>
+
+				
+			<div class="bottomfooter" style="background-color: rgb(2, 2, 105); position: absolute; bottom: 0%; transform: translateY(0%);"> 
+				<a class="footerText" style="bottom: auto; top: 20%;" href="{{hostname}}/sitemap">Карта сайта</a>
+				<p style="position: absolute; bottom: 0%;" class="footerText">Эта страница принадлежит Kerimniy и лицензирована <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+				<a class="footerIcon" style="right: 1%;" href="https://kerimniy.cloudpub.ru">
+					<img style="height: 100%;;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+				</a>
+
+				<div class="linksImagesContainer">
+					<a onclick="inDev()"><img class="imageForHover" src="static/logos/yg.svg" draggable="false" style="cursor: not-allowed; left:20%;top: 0%;" alt=" " ></a>
+					<a href="https://github.com/Kerimniy"><img class="imageForHover" src="static/logos/github.svg" draggable="false" style="left:40%;top: 0%;" alt=" " ></a>
+					<a href='https://t.me/Kerimniy'><img class="imageForHover" src="static/logos/telegram.svg" draggable="false" style="left:60%; top: 0%;" alt=" " ></a>
+					<a href='https://kerimniy.itch.io/'><img class="imageForHover" src="static/logos/itchio.svg" draggable="false" style="left:80%; top: 0%;" alt=" " ><div style="background-color: white; box-sizing: border-box;"></div></a>
+				</div>
+				
+			</div>
+			
+
+		</div>
+		
+		
+
+		<div id="menu"  class="menuDiv">
+	
+			<div class="menuBg">
+				<div style="position: absolute; width: 85%; height: 90%; top: 5%; padding: 7.5%;" >
+					<p class="menuLinksText" style="top: -3%; left:50%; cursor: default;">Ссылки</p>
+
+					<a class="menuBoxForText" style="top:10%; left:50%;" onclick="smoothscroll('1')">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Приложения </p>
+					</a>
+
+					<a class="menuBoxForText" style="top:20%; left:50%;" onclick="smoothscroll('2')">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Игры </p>
+					</a>
+
+					<a class="menuBoxForText" style="top:30%; left:50%;" onclick="inDev()">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">TSS</p>
+					</a>
+
+					<a class="menuBoxForText" style="top:40%; left:50%;" href='{{hostname}}'>
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Главная</p>
+					</a>
+
+					<p class="menuLinksText" style="width: 97.5%; top:43%; cursor: default;">Те самые, легендарные Ссылки</p>
+
+					
+					<a class="menuBoxForText" style="top:60%; left:50%;" href="https://t.me/Kerimniy">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Телеграм</p>
+					</a>
+
+					<a class="menuBoxForText" style="top:70%; left:50%;" href="https://github.com/Kerimniy">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">Гитхаб</p>
+					</a>
+					
+					<a class="menuBoxForText" style="top:80%; left:50%;" href="https://kerimniy.itch.io/">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%);">itch.io</p>
+					</a>
+	
+					<a class="menuBoxForText" style="top:90%; left:50%;" onclick="inDev()">
+						<p class="menuLinksText" style="transform: translate(-50%,-85%); width: 100%;">Яндекс Игры</p>
+					</a>
+				</div>
+			</div> 
+
+
+			<button class="menuButton" style="width:20%" onclick="dvizh2()" >
+				<img id="arrow" style="position: absolute; pointer-events: none; transform: translate(-50%,-50%);  top:50%; left:70%; width: 75%; " src="https://img.icons8.com/?size=100&id=39790&format=png&color=000000" alt="Фото">
+			</button>
+		</div>
+	</body>
+</html>

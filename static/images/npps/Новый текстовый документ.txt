@@ -1,0 +1,1 @@
+				pathsPack3 = ["{{ url_for('static', filename='images/npps/npps_img (1).webp') }}","{{ url_for('static', filename='images/npps/npps_img (2).webp') }}","{{ url_for('static', filename='images/npps/npps_img (3).webp') }}","{{ url_for('static', filename='images/npps/npps_img (4).webp') }}","{{ url_for('static', filename='images/npps/npps_img (5).webp') }}"];

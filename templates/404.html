@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta http-equiv="preload">
+		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+		<title>404 - Не найдено</title>	
+		<meta name="description"  content="Kerimniy - 404 не найдено">
+		<meta name="robots" content="none"/>
+		<meta name="author" content="Kerimniy">
+  		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logos/favicon.ico') }}">
+
+
+		<style>
+			.mainButton{
+				position: absolute; 
+				transform: translate(-50%,-50%); 
+				border-radius: 3vh; 
+				font-size: 5vh;
+				color: #c8eefd;
+				background: linear-gradient(125deg,rgba(55, 27, 148, 1) 0%, rgb(121, 5, 121) 50%, rgba(0, 162, 232, 1) 100%); 
+				border: 0.75vh solid #e3f5f8;
+				background-size: 100%;
+				cursor: pointer;
+				left: 50%; top: 50%; height: 20%; aspect-ratio: 3/1;  
+				transition: background-size 0.5s;
+			}
+			.mainButton:hover{
+				background-size: 350%;
+				transition: background-size 0.5s;
+			}
+
+			@media(max-width:700px){
+				.mainButton{
+				position: absolute; 
+				transform: translate(-50%,-50%); 
+				border-radius: 3vh; 
+				font-size: 5vh;
+				color: #c8eefd;
+				background: linear-gradient(125deg,rgba(55, 27, 148, 1) 0%, rgb(121, 5, 121) 50%, rgba(0, 162, 232, 1) 100%); 
+				border: 0.75vh solid #e3f5f8;
+				background-size: 100%;
+				cursor: pointer;
+				left: 50%; top: 50%; height: 10%; aspect-ratio: 3/1;  
+				transition: background-size 0.5s;
+			}
+			}
+		</style>
+		
+	</head>
+
+	<body style="height: 100vh;">
+		
+		<div class="header_header">
+			<p class="label"> Такой страницы здесь нет</p>
+			<a href="https://kerimniy.cloudpub.ru">
+			<img class="mainIcon" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+		</div>
+
+		<button onclick="location.href='{{hostname}}/'" class="mainButton" >На главную</button>
+		
+		<div class="bottomfooter" style="background-color: rgb(2, 2, 105); bottom: 0%; height: 15%;"> 
+			<a class="footerText" style="bottom: auto; top: 20%;" href="{{hostname}}/sitemap">Карта сайта</a>
+			<p class="footerText">Эта страница принадлежит Kerimniy и лицензирована <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+			<a class="footerIcon" style="right: 1%;" href="https://kerimniy.cloudpub.ru">
+				<img style="height: 100%;;" src="https://raw.githubusercontent.com/Kerimniy/Kerimniy-Links/refs/heads/main/images/favicon.webp" alt="ico">
+			</a>
+			<div class="linksImagesContainer">
+				<a onclick="inDev()"><img class="imageForHover" src="{{ url_for('static', filename='logos/yg.svg') }}" draggable="false" style="border-radius: 100%; cursor: not-allowed; position: absolute; opacity: 1; left:20%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href="https://github.com/Kerimniy"><img class="imageForHover" src="{{ url_for('static', filename='logos/github.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:40%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href='https://t.me/Kerimniy'><img class="imageForHover" src="{{ url_for('static', filename='logos/telegram.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:60%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ></a>
+				<a href='https://kerimniy.itch.io/'><img class="imageForHover" src="{{ url_for('static', filename='logos/itchio.svg') }}" draggable="false" style="border-radius: 100%; position: absolute; opacity: 1; left:80%; height:70%; top: 0%; transform: translateX(-50%);" alt=" " ><div style="background-color: white; box-sizing: border-box;"></div></a>
+			</div>
+			
+		</div>
+
+	</body>
+</html>
